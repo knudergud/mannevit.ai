@@ -789,6 +789,11 @@ button { cursor: pointer; background: none; border: none; }
       <input type="hidden" name="access_key" value="83776b15-f2c1-4e2c-b389-8e3e8f03845e">
       <input type="hidden" name="subject" value="New inquiry from mannevit.ai">
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="referrer_url" id="cf-referrer">
+      <input type="hidden" name="landing_source" id="cf-source">
+      <input type="hidden" name="utm_source" id="cf-utm-source">
+      <input type="hidden" name="utm_medium" id="cf-utm-medium">
+      <input type="hidden" name="utm_campaign" id="cf-utm-campaign">
 
       <div class="form-row">
         <div class="form-group">
@@ -866,13 +871,36 @@ button { cursor: pointer; background: none; border: none; }
     </div>
     <div class="footer-meta">
       <p>© 2026 Mannevit</p>
-      <p><a href="mailto:knud@mannevit.ai">knud@mannevit.ai</a></p>
+      <p><a href="mailto:mannevit@mannevit.ai">mannevit@mannevit.ai</a></p>
 
     </div>
   </div>
 </footer>
 
 <script>
+// Capture traffic source into hidden form fields
+(function () {
+  function getParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+  var ref = document.referrer || 'direct';
+  var src = getParam('utm_source');
+  // If no utm_source, try to extract a readable source from the referrer
+  if (!src && document.referrer) {
+    try {
+      src = new URL(document.referrer).hostname.replace(/^www\./, '');
+    } catch(e) {}
+  }
+  if (!src) src = 'direct';
+
+  var el = function(id) { return document.getElementById(id); };
+  if (el('cf-referrer'))    el('cf-referrer').value    = ref;
+  if (el('cf-source'))     el('cf-source').value      = src;
+  if (el('cf-utm-source')) el('cf-utm-source').value  = getParam('utm_source');
+  if (el('cf-utm-medium')) el('cf-utm-medium').value  = getParam('utm_medium');
+  if (el('cf-utm-campaign')) el('cf-utm-campaign').value = getParam('utm_campaign');
+})();
+
 // Contact form — Web3Forms AJAX
 (function () {
   const form = document.getElementById('contactForm');
@@ -899,7 +927,7 @@ button { cursor: pointer; background: none; border: none; }
       const result = await res.json();
       if (result.success) {
         fb.className = 'form-feedback success';
-        fb.textContent = 'Message received. I will be in touch shortly.';
+        fb.textContent = 'Message received. We will be in touch shortly.';
         form.reset();
       } else {
         throw new Error(result.message || 'Submission failed');
