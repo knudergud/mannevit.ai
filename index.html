@@ -208,13 +208,22 @@ button { cursor: pointer; background: none; border: none; }
 .lang-btn {
   background: none; border: none; cursor: pointer;
   padding: 2px; border-radius: 4px;
-  opacity: 0.4; transition: opacity 180ms;
+  opacity: 0.7; transition: opacity 180ms;
   line-height: 0; flex-shrink: 0;
 }
 .lang-btn svg { display: block; border-radius: 2px; overflow: hidden; }
-.lang-btn.active { opacity: 1; }
-.lang-btn:hover { opacity: 0.75; }
-.lang-btn.active:hover { opacity: 1; }
+.lang-btn:hover { opacity: 1; }
+/* Language toggle visibility logic:
+   - In EN mode: show only the NO flag (inviting switch to Norwegian)
+   - In NO mode: show only the EN text button (inviting switch to English) */
+[data-lang="en"] #lang-en  { display: none; }
+[data-lang="no"] #lang-no  { display: none; }
+/* EN text button styling */
+#lang-en {
+  font-family: var(--font-body); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--text-muted);
+  padding: 3px 5px;
+}
 /* On mobile, hide the header CTA to prevent cramping */
 @media (max-width: 640px) {
   .header-cta { display: none; }
@@ -630,33 +639,15 @@ button { cursor: pointer; background: none; border: none; }
     </a>
     <div class="header-actions">
       <div class="lang-toggle" aria-label="Language toggle">
-        <button id="lang-en" class="lang-btn active" aria-label="Switch to English">
-          <!-- US flag SVG -->
-          <svg width="22" height="16" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg">
-            <rect width="22" height="16" fill="#B22234"/>
-            <rect y="1.23" width="22" height="1.23" fill="#fff"/>
-            <rect y="3.69" width="22" height="1.23" fill="#fff"/>
-            <rect y="6.15" width="22" height="1.23" fill="#fff"/>
-            <rect y="8.62" width="22" height="1.23" fill="#fff"/>
-            <rect y="11.08" width="22" height="1.23" fill="#fff"/>
-            <rect y="13.54" width="22" height="1.23" fill="#fff"/>
-            <rect width="9" height="8.62" fill="#3C3B6E"/>
-            <!-- Stars: 3 rows simplified as dots -->
-            <circle cx="1.5" cy="1.5" r="0.7" fill="#fff"/><circle cx="3" cy="1.5" r="0.7" fill="#fff"/><circle cx="4.5" cy="1.5" r="0.7" fill="#fff"/><circle cx="6" cy="1.5" r="0.7" fill="#fff"/><circle cx="7.5" cy="1.5" r="0.7" fill="#fff"/>
-            <circle cx="2.25" cy="3" r="0.7" fill="#fff"/><circle cx="3.75" cy="3" r="0.7" fill="#fff"/><circle cx="5.25" cy="3" r="0.7" fill="#fff"/><circle cx="6.75" cy="3" r="0.7" fill="#fff"/>
-            <circle cx="1.5" cy="4.5" r="0.7" fill="#fff"/><circle cx="3" cy="4.5" r="0.7" fill="#fff"/><circle cx="4.5" cy="4.5" r="0.7" fill="#fff"/><circle cx="6" cy="4.5" r="0.7" fill="#fff"/><circle cx="7.5" cy="4.5" r="0.7" fill="#fff"/>
-            <circle cx="2.25" cy="6" r="0.7" fill="#fff"/><circle cx="3.75" cy="6" r="0.7" fill="#fff"/><circle cx="5.25" cy="6" r="0.7" fill="#fff"/><circle cx="6.75" cy="6" r="0.7" fill="#fff"/>
-            <circle cx="1.5" cy="7.5" r="0.7" fill="#fff"/><circle cx="3" cy="7.5" r="0.7" fill="#fff"/><circle cx="4.5" cy="7.5" r="0.7" fill="#fff"/><circle cx="6" cy="7.5" r="0.7" fill="#fff"/><circle cx="7.5" cy="7.5" r="0.7" fill="#fff"/>
-          </svg>
-        </button>
+        <!-- Shown only in NO mode: click to switch back to English -->
+        <button id="lang-en" class="lang-btn" aria-label="Switch to English">EN</button>
+        <!-- Shown only in EN mode: click to switch to Norwegian -->
         <button id="lang-no" class="lang-btn" aria-label="Bytt til norsk">
           <!-- Norwegian flag SVG -->
           <svg width="22" height="16" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg">
             <rect width="22" height="16" fill="#EF2B2D"/>
-            <!-- White cross -->
             <rect x="6" width="4" height="16" fill="#fff"/>
             <rect y="6" width="22" height="4" fill="#fff"/>
-            <!-- Blue cross -->
             <rect x="7" width="2" height="16" fill="#002868"/>
             <rect y="7" width="22" height="2" fill="#002868"/>
           </svg>
