@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link rel="preload" href="https://api.fontshare.com/v2/css?f[]=switzer@400,300&display=swap" as="style">
+<link rel="preload" href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet">
 
@@ -1046,12 +1046,16 @@ button { cursor: pointer; background: none; border: none; }
     fb.textContent = '';
 
     // Sync the hidden Norwegian select value to the active EN select before submit
-    var lang = document.documentElement.getAttribute('data-lang') || 'en';
     var selectEn = document.getElementById('cf-interest-en');
     var selectNo = document.getElementById('cf-interest-no');
     // Ensure only the active select has a name before serialising
-    if (selectEn) selectEn.name = lang === 'no' ? '' : 'interest';
-    if (selectNo) selectNo.name = lang === 'no' ? 'interest' : '';
+    if (lang === 'no') {
+      if (selectNo) selectNo.setAttribute('name', 'interest');
+      if (selectEn) selectEn.removeAttribute('name');
+    } else {
+      if (selectEn) selectEn.setAttribute('name', 'interest');
+      if (selectNo) selectNo.removeAttribute('name');
+    }
 
     const data = new FormData(form);
     const json = Object.fromEntries(data);
@@ -1070,8 +1074,8 @@ button { cursor: pointer; background: none; border: none; }
           : 'Message received. We will be in touch shortly.';
         form.reset();
         // Restore EN select name after reset
-        if (selectEn) selectEn.name = 'interest';
-        if (selectNo) selectNo.name = '';
+        if (selectEn) selectEn.setAttribute('name', 'interest');
+        if (selectNo) selectNo.removeAttribute('name');
       } else {
         throw new Error(result.message || 'Submission failed');
       }
