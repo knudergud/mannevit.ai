@@ -205,10 +205,20 @@ button { cursor: pointer; background: none; border: none; }
 
 /* LANG TOGGLE */
 .lang-toggle { display: flex; align-items: center; gap: 4px; }
-.lang-btn { background: none; border: none; cursor: pointer; font-size: 1.25rem; line-height: 1; padding: 2px; border-radius: 4px; opacity: 0.4; transition: opacity 180ms; }
+.lang-btn {
+  background: none; border: none; cursor: pointer;
+  padding: 2px; border-radius: 4px;
+  opacity: 0.4; transition: opacity 180ms;
+  line-height: 0; flex-shrink: 0;
+}
+.lang-btn svg { display: block; border-radius: 2px; overflow: hidden; }
 .lang-btn.active { opacity: 1; }
 .lang-btn:hover { opacity: 0.75; }
 .lang-btn.active:hover { opacity: 1; }
+/* On mobile, hide the header CTA to prevent cramping */
+@media (max-width: 640px) {
+  .header-cta { display: none; }
+}
 
 /* HERO */
 .hero {
@@ -620,13 +630,42 @@ button { cursor: pointer; background: none; border: none; }
     </a>
     <div class="header-actions">
       <div class="lang-toggle" aria-label="Language toggle">
-        <button id="lang-en" class="lang-btn active" aria-label="Switch to English">🇺🇸</button>
-        <button id="lang-no" class="lang-btn" aria-label="Bytt til norsk">🇳🇴</button>
+        <button id="lang-en" class="lang-btn active" aria-label="Switch to English">
+          <!-- US flag SVG -->
+          <svg width="22" height="16" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="16" fill="#B22234"/>
+            <rect y="1.23" width="22" height="1.23" fill="#fff"/>
+            <rect y="3.69" width="22" height="1.23" fill="#fff"/>
+            <rect y="6.15" width="22" height="1.23" fill="#fff"/>
+            <rect y="8.62" width="22" height="1.23" fill="#fff"/>
+            <rect y="11.08" width="22" height="1.23" fill="#fff"/>
+            <rect y="13.54" width="22" height="1.23" fill="#fff"/>
+            <rect width="9" height="8.62" fill="#3C3B6E"/>
+            <!-- Stars: 3 rows simplified as dots -->
+            <circle cx="1.5" cy="1.5" r="0.7" fill="#fff"/><circle cx="3" cy="1.5" r="0.7" fill="#fff"/><circle cx="4.5" cy="1.5" r="0.7" fill="#fff"/><circle cx="6" cy="1.5" r="0.7" fill="#fff"/><circle cx="7.5" cy="1.5" r="0.7" fill="#fff"/>
+            <circle cx="2.25" cy="3" r="0.7" fill="#fff"/><circle cx="3.75" cy="3" r="0.7" fill="#fff"/><circle cx="5.25" cy="3" r="0.7" fill="#fff"/><circle cx="6.75" cy="3" r="0.7" fill="#fff"/>
+            <circle cx="1.5" cy="4.5" r="0.7" fill="#fff"/><circle cx="3" cy="4.5" r="0.7" fill="#fff"/><circle cx="4.5" cy="4.5" r="0.7" fill="#fff"/><circle cx="6" cy="4.5" r="0.7" fill="#fff"/><circle cx="7.5" cy="4.5" r="0.7" fill="#fff"/>
+            <circle cx="2.25" cy="6" r="0.7" fill="#fff"/><circle cx="3.75" cy="6" r="0.7" fill="#fff"/><circle cx="5.25" cy="6" r="0.7" fill="#fff"/><circle cx="6.75" cy="6" r="0.7" fill="#fff"/>
+            <circle cx="1.5" cy="7.5" r="0.7" fill="#fff"/><circle cx="3" cy="7.5" r="0.7" fill="#fff"/><circle cx="4.5" cy="7.5" r="0.7" fill="#fff"/><circle cx="6" cy="7.5" r="0.7" fill="#fff"/><circle cx="7.5" cy="7.5" r="0.7" fill="#fff"/>
+          </svg>
+        </button>
+        <button id="lang-no" class="lang-btn" aria-label="Bytt til norsk">
+          <!-- Norwegian flag SVG -->
+          <svg width="22" height="16" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="16" fill="#EF2B2D"/>
+            <!-- White cross -->
+            <rect x="6" width="4" height="16" fill="#fff"/>
+            <rect y="6" width="22" height="4" fill="#fff"/>
+            <!-- Blue cross -->
+            <rect x="7" width="2" height="16" fill="#002868"/>
+            <rect y="7" width="22" height="2" fill="#002868"/>
+          </svg>
+        </button>
       </div>
       <button data-theme-toggle aria-label="Switch to light mode" class="theme-toggle">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="#contact" class="btn btn-primary"
+      <a href="#contact" class="btn btn-primary header-cta"
          data-en="Get in Touch"
          data-no="Kom i kontakt">Get in Touch</a>
     </div>
