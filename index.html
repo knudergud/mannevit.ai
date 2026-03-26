@@ -11,6 +11,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mannevit.ai">
 <link rel="canonical" href="https://mannevit.ai/">
+<meta name="theme-color" content="#0c0b09">
+<meta property="og:image" content="https://mannevit.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mannevit — AI Strategy &amp; Training">
+<meta name="twitter:description" content="Premium AI consulting, workshops, and executive coaching for organizations that are serious about AI. No hype. No theory. Results.">
+<meta name="twitter:image" content="https://mannevit.ai/og-image.png">
 
 <script type="application/ld+json">
 {
@@ -26,12 +34,14 @@
     "name": "Knud Berthelsen",
     "jobTitle": "Professor of Practice, Tulane University",
     "affiliation": "Tulane University"
-  },
+  }
 }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preload" href="https://api.fontshare.com/v2/css?f[]=switzer@400,300&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet">
 
@@ -116,15 +126,7 @@
   --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme]) {
-    --bg:#faf8f3;--bg-2:#f5f2eb;--surface:#f0ede6;--surface-2:#eae6dd;--surface-3:#e3dfd5;
-    --divider:#dbd6cc;--border:#ccc7bc;--text:#1c1a16;--text-muted:#6a6560;--text-faint:#aaa79e;
-    --text-inverse:#faf8f3;--gold:#9a6f20;--gold-light:#7a5618;--gold-dim:rgba(154,111,32,0.08);
-    --gold-border:rgba(154,111,32,0.22);--shadow-sm:0 1px 4px rgba(0,0,0,0.06);
-    --shadow-md:0 6px 24px rgba(0,0,0,0.09);--shadow-lg:0 16px 48px rgba(0,0,0,0.12);
-  }
-}
+/* prefers-color-scheme intentionally omitted — theme is always explicitly set via data-theme attribute */
 
 /* BASE */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -272,7 +274,7 @@ button { cursor: pointer; background: none; border: none; }
 }
 .hero-actions { display: flex; flex-wrap: nowrap; gap: var(--space-3); }
 
-/* Hero callout card (right column — stolen from ChatGPT, improved) */
+/* Hero callout card (right column) */
 .hero-callout {
   background: var(--surface-2);
   border: 1px solid var(--gold-border);
@@ -317,7 +319,7 @@ button { cursor: pointer; background: none; border: none; }
   color: var(--gold); opacity: 0.6;
 }
 
-/* QUOTE STRIP (stolen from Claude, refined) */
+/* QUOTE STRIP */
 .quote-strip {
   background: var(--surface);
   border-block: 1px solid var(--divider);
@@ -419,7 +421,7 @@ button { cursor: pointer; background: none; border: none; }
   opacity: 0.5; padding-top: 0.1em;
   user-select: none;
 }
-.service-body {}
+
 .service-body h3 {
   font-family: var(--font-display);
   font-size: var(--text-xl); font-weight: 400;
@@ -599,46 +601,71 @@ button { cursor: pointer; background: none; border: none; }
 </head>
 <body>
 
+<!-- SVG SYMBOL DEFINITIONS — logo wordmark defined once, reused three times -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="wordmark-mono" viewBox="0 0 1090 224">
+    <line x1="53"  y1="25" x2="53"  y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="173" y1="25" x2="173" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="53"  y1="25" x2="173" y2="112" stroke-width="18" stroke-linecap="round"/>
+    <line x1="173" y1="25" x2="53"  y2="112" stroke-width="18" stroke-linecap="round"/>
+    <line x1="280" y1="25" x2="236" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="280" y1="25" x2="324" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="250" y1="130" x2="310" y2="130" stroke-width="18" stroke-linecap="round"/>
+    <line x1="386" y1="25" x2="386" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="386" y1="25" x2="466" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="466" y1="25" x2="466" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="528" y1="25" x2="528" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="528" y1="25" x2="608" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="608" y1="25" x2="608" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="670" y1="25" x2="670" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="670" y1="25" x2="742" y2="25"  stroke-width="18" stroke-linecap="round"/>
+    <line x1="670" y1="112" x2="726" y2="112" stroke-width="18" stroke-linecap="round"/>
+    <line x1="670" y1="199" x2="742" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="800" y1="25" x2="848" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="896" y1="25" x2="848" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="958" y1="25" x2="958" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="1042" y1="25" x2="1042" y2="199" stroke-width="18" stroke-linecap="round"/>
+    <line x1="1042" y1="25" x2="1002" y2="84"  stroke-width="18" stroke-linecap="round"/>
+    <line x1="1042" y1="25" x2="1080" y2="84"  stroke-width="18" stroke-linecap="round"/>
+  </symbol>
+  <!-- Two-color version: MANNE=gold, VIT=white — used in quote strip -->
+  <symbol id="wordmark-color" viewBox="0 0 1090 224">
+    <line x1="53"  y1="25" x2="53"  y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="173" y1="25" x2="173" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="53"  y1="25" x2="173" y2="112" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="173" y1="25" x2="53"  y2="112" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="280" y1="25" x2="236" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="280" y1="25" x2="324" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="250" y1="130" x2="310" y2="130" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="386" y1="25" x2="386" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="386" y1="25" x2="466" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="466" y1="25" x2="466" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="528" y1="25" x2="528" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="528" y1="25" x2="608" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="608" y1="25" x2="608" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="670" y1="25" x2="670" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="670" y1="25" x2="742" y2="25"  stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="670" y1="112" x2="726" y2="112" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="670" y1="199" x2="742" y2="199" stroke="var(--gold)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="800" y1="25" x2="848" y2="199" stroke="var(--text)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="896" y1="25" x2="848" y2="199" stroke="var(--text)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="958" y1="25" x2="958" y2="199" stroke="var(--text)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="1042" y1="25" x2="1042" y2="199" stroke="var(--text)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="1042" y1="25" x2="1002" y2="84"  stroke="var(--text)" stroke-width="18" stroke-linecap="round"/>
+    <line x1="1042" y1="25" x2="1080" y2="84"  stroke="var(--text)" stroke-width="18" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
 <!-- HEADER -->
 <header class="site-header" id="top">
   <div class="container header-inner">
     <a href="/" class="logo" aria-label="Mannevit home">
-      <svg width="272" height="28" viewBox="0 0 1090 224" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- ᛗ Mannaz -->
-        <line x1="53"  y1="25" x2="53"  y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="173" y1="25" x2="173" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="53"  y1="25" x2="173" y2="112" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="173" y1="25" x2="53"  y2="112" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <!-- A -->
-        <line x1="280" y1="25" x2="236" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="280" y1="25" x2="324" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="250" y1="130" x2="310" y2="130" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <!-- N -->
-        <line x1="386" y1="25" x2="386" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="386" y1="25" x2="466" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="466" y1="25" x2="466" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <!-- N -->
-        <line x1="528" y1="25" x2="528" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="528" y1="25" x2="608" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="608" y1="25" x2="608" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <!-- E -->
-        <line x1="670" y1="25" x2="670" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="670" y1="25" x2="742" y2="25"  stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="670" y1="112" x2="726" y2="112" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="670" y1="199" x2="742" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <!-- V -->
-        <line x1="800" y1="25" x2="848" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="896" y1="25" x2="848" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <!-- ᛁ Isa -->
-        <line x1="958" y1="25" x2="958" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <!-- ᛏ Tiwaz -->
-        <line x1="1042" y1="25" x2="1042" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="1042" y1="25" x2="1002" y2="84"  stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-        <line x1="1042" y1="25" x2="1080" y2="84"  stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
+      <svg width="272" height="28" viewBox="0 0 1090 224" fill="none" stroke="currentColor" aria-hidden="true">
+        <use href="#wordmark-mono"/>
       </svg>
     </a>
     <div class="header-actions">
-      <div class="lang-toggle" aria-label="Language toggle">
+      <div class="lang-toggle" role="group" aria-label="Language toggle">
         <!-- Shown only in NO mode: click to switch back to English -->
         <button id="lang-en" class="lang-btn" aria-label="Switch to English">EN</button>
         <!-- Shown only in EN mode: click to switch to Norwegian -->
@@ -727,38 +754,8 @@ button { cursor: pointer; background: none; border: none; }
 <!-- QUOTE STRIP (Hávamál) -->
 <div class="quote-strip" role="complementary" aria-label="Founding philosophy">
   <div class="quote-strip-inner">
-    <svg width="480" height="98" viewBox="0 0 1090 224" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block; margin: 0 auto 1.5rem;">
-      <!-- ᛗ Mannaz — gold -->
-      <line x1="53"  y1="25" x2="53"  y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="173" y1="25" x2="173" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="53"  y1="25" x2="173" y2="112" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="173" y1="25" x2="53"  y2="112" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <!-- A — gold -->
-      <line x1="280" y1="25" x2="236" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="280" y1="25" x2="324" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="250" y1="130" x2="310" y2="130" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <!-- N — gold -->
-      <line x1="386" y1="25" x2="386" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="386" y1="25" x2="466" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="466" y1="25" x2="466" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <!-- N — gold -->
-      <line x1="528" y1="25" x2="528" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="528" y1="25" x2="608" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="608" y1="25" x2="608" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <!-- E — gold -->
-      <line x1="670" y1="25" x2="670" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="670" y1="25" x2="742" y2="25"  stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="670" y1="112" x2="726" y2="112" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <line x1="670" y1="199" x2="742" y2="199" stroke="#c9a84c" stroke-width="18" stroke-linecap="round"/>
-      <!-- V — white -->
-      <line x1="800" y1="25" x2="848" y2="199" stroke="#eae6de" stroke-width="18" stroke-linecap="round"/>
-      <line x1="896" y1="25" x2="848" y2="199" stroke="#eae6de" stroke-width="18" stroke-linecap="round"/>
-      <!-- ᛁ Isa — white -->
-      <line x1="958" y1="25" x2="958" y2="199" stroke="#eae6de" stroke-width="18" stroke-linecap="round"/>
-      <!-- ᛏ Tiwaz — white -->
-      <line x1="1042" y1="25" x2="1042" y2="199" stroke="#eae6de" stroke-width="18" stroke-linecap="round"/>
-      <line x1="1042" y1="25" x2="1002" y2="84"  stroke="#eae6de" stroke-width="18" stroke-linecap="round"/>
-      <line x1="1042" y1="25" x2="1080" y2="84"  stroke="#eae6de" stroke-width="18" stroke-linecap="round"/>
+    <svg width="480" height="98" viewBox="0 0 1090 224" fill="none" aria-hidden="true" style="display:block; margin: 0 auto 1.5rem;">
+      <use href="#wordmark-color"/>
     </svg>
     <blockquote>
       <p class="quote-text"
@@ -873,7 +870,7 @@ button { cursor: pointer; background: none; border: none; }
       If there is a fit, we will design an engagement that delivers measurable results for your organization.
     </p>
 
-    <form class="contact-form" id="contactForm" novalidate>
+    <form class="contact-form" id="contactForm" novalidate aria-label="Contact form">
       <input type="hidden" name="access_key" value="83776b15-f2c1-4e2c-b389-8e3e8f03845e">
       <input type="hidden" name="subject" value="New inquiry from mannevit.ai">
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
@@ -931,7 +928,7 @@ button { cursor: pointer; background: none; border: none; }
           <option value="Not sure yet">Not sure yet — let's talk</option>
         </select>
         <!-- Norwegian select -->
-        <select id="cf-interest-no" name="interest" class="select-no" style="display:none" aria-hidden="true" tabindex="-1">
+        <select id="cf-interest-no" class="select-no" style="display:none" aria-hidden="true" tabindex="-1">
           <option value="" disabled selected>Velg et interesseområde</option>
           <option value="AI Strategy &amp; Assessment">AI-strategi og vurdering</option>
           <option value="Executive AI Coaching">Executive AI-coaching</option>
@@ -968,30 +965,8 @@ button { cursor: pointer; background: none; border: none; }
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo footer-logo" aria-label="Mannevit">
-        <svg width="218" height="22" viewBox="0 0 1090 224" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <line x1="53"  y1="25" x2="53"  y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="173" y1="25" x2="173" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="53"  y1="25" x2="173" y2="112" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="173" y1="25" x2="53"  y2="112" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="280" y1="25" x2="236" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="280" y1="25" x2="324" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="250" y1="130" x2="310" y2="130" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="386" y1="25" x2="386" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="386" y1="25" x2="466" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="466" y1="25" x2="466" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="528" y1="25" x2="528" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="528" y1="25" x2="608" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="608" y1="25" x2="608" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="670" y1="25" x2="670" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="670" y1="25" x2="742" y2="25"  stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="670" y1="112" x2="726" y2="112" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="670" y1="199" x2="742" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="800" y1="25" x2="848" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="896" y1="25" x2="848" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="958" y1="25" x2="958" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="1042" y1="25" x2="1042" y2="199" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="1042" y1="25" x2="1002" y2="84"  stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
-          <line x1="1042" y1="25" x2="1080" y2="84"  stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
+        <svg width="218" height="22" viewBox="0 0 1090 224" fill="none" stroke="currentColor" aria-hidden="true">
+          <use href="#wordmark-mono"/>
         </svg>
       </a>
       <p class="footer-tagline"
@@ -1039,22 +1014,44 @@ button { cursor: pointer; background: none; border: none; }
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
+
+    // Client-side validation
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    var nameEl  = document.getElementById('cf-name');
+    var emailEl = document.getElementById('cf-email');
+    var isValid = true;
+    [nameEl, emailEl].forEach(function(el) {
+      if (!el) return;
+      el.style.borderColor = '';
+      if (!el.value.trim()) {
+        el.style.borderColor = 'rgba(180,60,60,0.7)';
+        isValid = false;
+      }
+    });
+    if (emailEl && emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+      emailEl.style.borderColor = 'rgba(180,60,60,0.7)';
+      isValid = false;
+    }
+    if (!isValid) {
+      fb.className = 'form-feedback error';
+      fb.textContent = lang === 'no'
+        ? 'Fyll ut navn og e-post.'
+        : 'Please fill in your name and email.';
+      return;
+    }
+
     btn.disabled = true;
     btn.textContent = 'Sending…';
     fb.className = 'form-feedback';
     fb.textContent = '';
 
     // Sync the hidden Norwegian select value to the active EN select before submit
-    var currentLang = document.documentElement.getAttribute('data-lang') || 'en';
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
     var selectEn = document.getElementById('cf-interest-en');
     var selectNo = document.getElementById('cf-interest-no');
-    if (currentLang === 'no' && selectNo) {
-      selectNo.name = 'interest';
-      if (selectEn) selectEn.removeAttribute('name');
-    } else {
-      if (selectEn) selectEn.name = 'interest';
-      if (selectNo) selectNo.removeAttribute('name');
-    }
+    // Ensure only the active select has a name before serialising
+    if (selectEn) selectEn.name = lang === 'no' ? '' : 'interest';
+    if (selectNo) selectNo.name = lang === 'no' ? 'interest' : '';
 
     const data = new FormData(form);
     const json = Object.fromEntries(data);
@@ -1068,27 +1065,24 @@ button { cursor: pointer; background: none; border: none; }
       const result = await res.json();
       if (result.success) {
         fb.className = 'form-feedback success';
-        var currentLang = document.documentElement.getAttribute('data-lang') || 'en';
-        fb.textContent = currentLang === 'no'
+        fb.textContent = lang === 'no'
           ? 'Melding mottatt. Vi tar kontakt snart.'
           : 'Message received. We will be in touch shortly.';
         form.reset();
-        // Restore select name attributes after reset
+        // Restore EN select name after reset
         if (selectEn) selectEn.name = 'interest';
-        if (selectNo) selectNo.removeAttribute('name');
+        if (selectNo) selectNo.name = '';
       } else {
         throw new Error(result.message || 'Submission failed');
       }
     } catch (err) {
       fb.className = 'form-feedback error';
-      var currentLang = document.documentElement.getAttribute('data-lang') || 'en';
-      fb.textContent = currentLang === 'no'
+      fb.textContent = lang === 'no'
         ? 'Noe gikk galt. Send oss en e-post direkte på mannevit@mannevit.ai.'
         : 'Something went wrong. Please email mannevit@mannevit.ai directly.';
     } finally {
       btn.disabled = false;
-      var currentLang = document.documentElement.getAttribute('data-lang') || 'en';
-      btn.textContent = currentLang === 'no' ? 'Send melding' : 'Send Message';
+      btn.textContent = lang === 'no' ? 'Send melding' : 'Send Message';
     }
   });
 })();
