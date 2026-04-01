@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SLAM 2030 — Intro to Data Analytics | Maymester 2026</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxNiIgZmlsbD0iIzBjMGIwOSIvPjxnIHN0cm9rZT0iI2M5YTg0YyIgc3Ryb2tlLXdpZHRoPSIyLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0ibm9uZSI+PGxpbmUgeDE9IjgiIHkxPSI0IiB4Mj0iOCIgeTI9IjI4Ii8+PGxpbmUgeDE9IjI0IiB5MT0iNCIgeDI9IjI0IiB5Mj0iMjgiLz48bGluZSB4MT0iOCIgeTE9IjQiIHgyPSIyNCIgeTI9IjE2Ii8+PGxpbmUgeDE9IjI0IiB5MT0iNCIgeDI9IjgiIHkyPSIxNiIvPjwvZz48L3N2Zz4=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0c0b09;
+  --surface: #141210;
+  --surface-2: #1a1815;
+  --surface-3: #201e1a;
+  --border: #322f28;
+  --divider: #272420;
+  --text: #eae6de;
+  --text-muted: #8c8880;
+  --text-faint: #484540;
+  --gold: #c9a84c;
+  --gold-light: #e2c272;
+  --gold-dim: rgba(201,168,76,0.12);
+  --gold-border: rgba(201,168,76,0.22);
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Switzer', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100dvh;
+}
+
+::selection {
+  background: rgba(201,168,76,0.25);
+  color: var(--text);
+}
+
+/* LAYOUT */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* HEADER */
+.course-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.subtitle {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 560px;
+}
+
+/* LOGISTICS STRIP */
+.logistics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--divider);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.logistics-item {
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+.logistics-item .label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.logistics-item .value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.logistics-item .value strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* BODY COPY */
+.copy {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.copy strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.copy + .copy { margin-top: -0.75rem; }
+
+/* DIVIDER */
+.gold-line {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+  margin: 2rem 0;
+}
+
+/* WHAT YOU'LL LEARN */
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+}
+
+.skill-card .skill-icon {
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.skill-card h3 {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.skill-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* REQUIREMENTS BOX */
+.req-box {
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.req-box h3 {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.req-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.req-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.req-list .check {
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* PULL QUOTE */
+.pull-quote {
+  border-left: 3px solid var(--gold);
+  padding: 0.75rem 0 0.75rem 1.25rem;
+  margin: 2rem 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* TOPICS */
+.topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.topic-tag {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* INSTRUCTOR */
+.instructor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.instructor-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--surface-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.instructor-info .name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.instructor-info .role {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* CTA */
+.cta-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.cta-section .big {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.cta-section .code {
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  border-top: 1px solid var(--divider);
+  margin-top: 2rem;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+/* RESPONSIVE */
+@media (max-width: 520px) {
+  .page { padding: 2rem 1.15rem 3rem; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .logistics { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <span class="course-tag">Maymester 2026</span>
+  <h1>SLAM 2030<br><em>Intro to Data Analytics</em></h1>
+  <p class="subtitle">The hands-on analytics training you'll use for the rest of your career. 3 credits in 2 weeks.</p>
+
+  <!-- LOGISTICS -->
+  <div class="logistics">
+    <div class="logistics-item">
+      <div class="label">Dates</div>
+      <div class="value"><strong>May 11 – 22</strong></div>
+    </div>
+    <div class="logistics-item">
+      <div class="label">Schedule</div>
+      <div class="value">M–F, 10am–2pm</div>
+    </div>
+    <div class="logistics-item">
+      <div class="label">Credits</div>
+      <div class="value"><strong>3</strong></div>
+    </div>
+    <div class="logistics-item">
+      <div class="label">Format</div>
+      <div class="value">Fully <strong>Online</strong></div>
+    </div>
+  </div>
+
+  <!-- PITCH -->
+  <p class="copy">Every job posting says "data-driven." But do you actually know how to work with data?</p>
+
+  <p class="copy"><strong>SLAM 2030 gives you the hands-on skills to collect, clean, analyze, and present data</strong> — the kind of skills that make you dangerous in a job interview and indispensable on a team.</p>
+
+  <p class="copy">You'll work with real datasets, use current tools (including AI), and learn how to turn numbers into stories that actually move people to action. You'll also learn to spot when data is being misused — a superpower in a world drowning in misleading charts and cherry-picked statistics.</p>
+
+  <p class="copy">Whether you're heading into business, policy, media, or anything else, <strong>the ability to make evidence-based arguments will set you apart.</strong></p>
+
+  <div class="gold-line"></div>
+
+  <!-- WHAT YOU'LL LEARN -->
+  <h2>What you'll learn</h2>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">&#x2753;</div>
+      <h3>Ask better questions</h3>
+      <p>Turn real-world problems into testable hypotheses and research designs</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">&#x1F9F9;</div>
+      <h3>Clean messy data</h3>
+      <p>Recognize quality issues and prepare diverse datasets for analysis</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">&#x1F4CA;</div>
+      <h3>Analyze &amp; visualize</h3>
+      <p>Descriptive, exploratory, diagnostic, predictive &amp; prescriptive techniques</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">&#x1F4AC;</div>
+      <h3>Tell the story</h3>
+      <p>Create compelling visualizations and narratives for any audience</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">&#x1F916;</div>
+      <h3>Use AI properly</h3>
+      <p>Leverage current AI tools for analysis while understanding their limits</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">&#x1F6A8;</div>
+      <h3>Spot the BS</h3>
+      <p>Identify statistical fallacies, data manipulation, and misleading visuals</p>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    This is the practical analytics course that teaches you what every employer assumes you already know.
+  </div>
+
+  <!-- TOPICS -->
+  <h2>Topics covered</h2>
+  <div class="topics-list">
+    <span class="topic-tag">Research Design</span>
+    <span class="topic-tag">Survey Design</span>
+    <span class="topic-tag">Data Types &amp; Sources</span>
+    <span class="topic-tag">Data Cleaning</span>
+    <span class="topic-tag">Exploratory Analysis</span>
+    <span class="topic-tag">Diagnostic Analysis</span>
+    <span class="topic-tag">Predictive Analysis</span>
+    <span class="topic-tag">Data Visualization</span>
+    <span class="topic-tag">Storytelling with Data</span>
+    <span class="topic-tag">AI Tools for Analytics</span>
+    <span class="topic-tag">Statistical Fallacies</span>
+    <span class="topic-tag">Ethics &amp; Validity</span>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <!-- REQUIREMENTS -->
+  <div class="req-box">
+    <h3>Two birds, one Maymester</h3>
+    <ul class="req-list">
+      <li><span class="check">&#x2713;</span> Satisfies the <strong>Core Curriculum Formal Reasoning</strong> requirement</li>
+      <li><span class="check">&#x2713;</span> Satisfies the <strong>SLAM Economic &amp; Financial Literacy</strong> requirement</li>
+      <li><span class="check">&#x2713;</span> 3 credit hours in just 2 weeks</li>
+    </ul>
+  </div>
+
+  <!-- COURSE DESIGN -->
+  <h2>How the course works</h2>
+  <p class="copy">This is an experiential, flipped classroom. You review materials before class, then spend class time doing — discussing, demonstrating, applying, reflecting. No death-by-lecture. You'll complete an individual project and a team project, both working with real data.</p>
+  <p class="copy"><strong>All you need:</strong> A laptop and a free Google account. No textbook. No prior data experience required.</p>
+
+  <div class="gold-line"></div>
+
+  <!-- INSTRUCTOR -->
+  <div class="instructor">
+    <div class="instructor-avatar">KB</div>
+    <div class="instructor-info">
+      <div class="name">Knud Berthelsen</div>
+      <div class="role">Professor of Practice, Tulane University<br>School of Liberal Arts (SLAM) &amp; Connolly Alexander Institute for Data Science</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <p class="big">Register now on Gibson</p>
+    <p>Search for <strong>SLAM 2030</strong> in Maymester 2026</p>
+    <p class="code">May 11 – 22 &middot; Online &middot; 3 credits</p>
+  </div>
+
+  <div class="footer">
+    <p>Tulane University &middot; Strategy, Leadership &amp; Analytics Minor</p>
+  </div>
+
+</div>
+
+</body>
+</html>
